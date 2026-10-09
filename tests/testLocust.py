@@ -12,6 +12,10 @@ class Tester(HttpUser):
         self.client.get("/users/over-twenty")
     @task(2)
     def TestBulk(self):
-        self.client.post(json={
-            "emails": ["test1@loadtest.local","test2@loadtest.local","test3@loadtest.local"]
+        self.client.post("api/users/bulk, "json={
+            "users": [
+            {"name": "Test 1", "email": "user1@test.com", "birth_date": "2001-01-01", "password": "password"},
+            {"name": "Test 2", "email": "user2@test.com", "birth_date": "2002-02-02", "password": "password"},
+            {"name": "Test 3", "email": "user3@test.com", "birth_date": "2003-03-03", "password": "password"},
+            ]
         })
